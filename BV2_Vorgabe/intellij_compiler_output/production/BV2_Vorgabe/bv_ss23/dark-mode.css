@@ -1,0 +1,45 @@
+/* dark-mode.css */
+
+* {
+    -fx-text-fill: white;
+}
+
+
+
+.root {
+    -fx-background-color: #333333;
+    -fx-text-fill: white;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #444444;
+    -fx-text-fill: white;
+}
+.titled-pane > .content > .text-area {
+    -fx-text-fill: black;
+}
+.button {
+    -fx-background-color: #FFA500; /* Mattes Orange */
+    -fx-text-fill: #FFFFFF; /* Weiße Schrift */
+}
+/* Change color of slider */
+.slider .track {
+    -fx-background-color: #FFA500; /* orange color */
+}
+
+
+/* Change color of checkbox tick mark */
+.check-box .box {
+    -fx-background-color: #FFA500; /* orange color */
+}
+/* Change color of checkbox check mark */
+.check-box .box .mark {
+    -fx-background-color: #FFA500; /* white color */
+}
+/* Checked checkbox */
+.check-box:selected .box .mark {
+    -fx-background-color: white;
+}
+.combo-box{
+    -fx-background-color: #FFA500;
+}
