@@ -44,10 +44,35 @@ public class GeometricTransform {
 		double angle_radiant = Math.toRadians(angle);
 		for (int y = 0; y < dst.height; y++) {
 			for (int x = 0; x < dst.width; x++) {
-				int x_d= x- dst.width/2;
-				int y_d= y- dst.height/2;
 
-			}}
+				int x_d= x - dst.width/2;
+				int y_d= y - dst.height/2;
+
+				double y_s_s = y_d/(Math.cos(angle_radiant)-y_d*perspectiveDistortion*Math.sin(angle_radiant));
+				double x_s_s = x_d*(perspectiveDistortion*Math.sin(angle_radiant)*y_s_s+1);
+
+				double x_s = x_s_s + src.width/2;
+				double y_s = y_s_s + src.height/2;
+
+				//naechster Nachbar
+
+				int OrgPos = (int)(y_s * src.width + x_s);
+				int pos = y * dst.width + x;
+
+				if(x_s<0||x_s>src.width-1){
+					dst.argb[pos] = 686868;
+				}
+				else if(y_s<0||y_s>src.height-1){
+					dst.argb[pos] = 686868;
+				}
+				else{
+					dst.argb[pos] = src.argb[OrgPos];
+				}
+
+
+
+			}
+		}
 
 		// TODO: implement the geometric transformation using nearest neighbour image rendering
 		
