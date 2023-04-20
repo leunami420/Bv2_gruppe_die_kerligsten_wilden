@@ -28,7 +28,7 @@ import javafx.stage.FileChooser;
 public class PerspectiveAppController {
  		   	  	  			
 	private static final String initialFileName = "59009_512.jpg";
-	private static File fileOpenPath = new File(".");
+	private static File fileOpenPath = new File(initialFileName);
 	private static final double angleStepSize = 5.0;	// used for angle increment and decrement
 	private static final double scaleX = 1.35;
 	private static final double scaleY = 1.05;

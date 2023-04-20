@@ -47,6 +47,13 @@ public class GeometricTransform {
 				int x_d= x- dst.width/2;
 				int y_d= y- dst.height/2;
 
+				try{
+					dst.argb[y * dst.width + x] = src.argb[y * src.width + x];
+
+				}catch(IndexOutOfBoundsException e){
+					dst.argb[y * dst.width + x] = 0xFFFFFFFF;
+				}
+
 			}}
 
 		// TODO: implement the geometric transformation using nearest neighbour image rendering
