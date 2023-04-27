@@ -121,35 +121,30 @@ public class GeometricTransform {
 				double h = x_s - x_s_downrounded;
 				double v = y_s - y_s_downrounded;
 
-				if (x_s_downrounded >= 0 && y_s_downrounded >= 0 && x_s_downrounded < src.width && y_s_downrounded < src.height) {
-					A_argb = src.argb[y_s_downrounded * dst.width + x_s_downrounded];
-				}else {
+				if (x_s_downrounded >= 0 && y_s_downrounded >= 0 && x_s_downrounded <= srcWidthMinusOne && y_s_downrounded <= srcHeightMinusOne) {
+					A_argb = src.argb[y_s_downrounded * src.width + x_s_downrounded];
+				} else {
 					A_argb = 0xFFFFFFFF;
-
 				}
 
-				if (x_s_uprounded >= 0 && y_s_downrounded >= 0 && x_s_uprounded < src.width && y_s_downrounded < src.height) {
-					B_argb = src.argb[y_s_downrounded * dst.width + x_s_uprounded];
-				}else {
+				if (x_s_uprounded >= 0 && y_s_downrounded >= 0 && x_s_uprounded <= srcWidthMinusOne && y_s_downrounded <= srcHeightMinusOne) {
+					B_argb = src.argb[y_s_downrounded * src.width + x_s_uprounded];
+				} else {
 					B_argb = 0xFFFFFFFF;
-
 				}
 
-				if (x_s_downrounded >= 0 && y_s_uprounded >= 0 && x_s_downrounded < src.width && y_s_uprounded < src.height) {
-
-				C_argb = src.argb[y_s_uprounded * dst.width + x_s_downrounded];
-
-				}else {
+				if (x_s_downrounded >= 0 && y_s_uprounded >= 0 && x_s_downrounded <= srcWidthMinusOne && y_s_uprounded <= srcHeightMinusOne) {
+					C_argb = src.argb[y_s_uprounded * src.width + x_s_downrounded];
+				} else {
 					C_argb = 0xFFFFFFFF;
-
 				}
 
-
-				if (x_s_uprounded >= 0 && y_s_uprounded >= 0 && x_s_uprounded < src.width && y_s_uprounded < src.height) {
+				if (x_s_uprounded >= 0 && y_s_uprounded >= 0 && x_s_uprounded <= srcWidthMinusOne && y_s_uprounded <= srcHeightMinusOne) {
 					D_argb = src.argb[y_s_uprounded * src.width + x_s_uprounded];
 				} else {
 					D_argb = 0xFFFFFFFF;
 				}
+
 
 				//red
 				int r = BiliniarInterpolate(h,v,(A_argb >> 16) & 0xff,(B_argb >> 16) & 0xff,(C_argb >> 16) & 0xff,(D_argb >> 16) & 0xff);
